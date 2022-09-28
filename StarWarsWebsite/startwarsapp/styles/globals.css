@@ -1,0 +1,41 @@
+@import 'stars.css';
+
+body {
+  background: black;
+  font-family: 'Titan One', cursive;
+  color: white;
+}
+
+
+.menubg {
+  border-radius: 50px 50px 10px 10px;
+}
+
+.botonEnlace {
+  border: 1px solid black;
+  padding: 10px;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+.botonEnlace:hover {
+  border: 1px solid white;
+  padding: 10px;
+  background: black;
+  color: white;
+}
+
+.imgPerssonaje {
+  height: 400px;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .image-menu {
+    position: relative;
+    width: 25em;
+    top: 0;
+    right: 0;
+  }
+}

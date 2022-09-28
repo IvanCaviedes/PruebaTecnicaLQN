@@ -1,0 +1,12 @@
+@import 'stars.css';
+
+.containerpage {
+  background: black;
+  font-family: 'Titan One', cursive;
+  color: white;
+}
+
+
+.menubg {
+  border-radius: 50px 50px 10px 10px;
+}
