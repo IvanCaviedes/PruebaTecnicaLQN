@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCharactersByid } from '../../redux/starwarsSlice'
+import { AppDispatch } from '../../redux/store'
 
 const Desctiption = () => {
   const router = useRouter()
@@ -13,25 +14,25 @@ const Desctiption = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getCharacterId = (id = 1) => {
+    const getCharacterId = (id: any) => {
       setLoading(true)
       dispacth(getCharactersByid({ id }))
         .unwrap()
         .then(() => setLoading(false))
         .catch((error) => console.log(error))
     }
-    getCharacterId(id)
-  }, [id])
+    getCharacterId(id ? id : 1)
+  }, [dispacth, id])
 
   if (loading) {
     return (
-        <div className="container vh-100 d-flex justify-content-center align-items-center">
-            <div className="spinner-border text-light " role="status" style={{ width: "10rem", height: "10rem" }}>
-                <span className="sr-only">Loading...</span>
-            </div>
+      <div className="container vh-100 d-flex justify-content-center align-items-center">
+        <div className="spinner-border text-light " role="status" style={{ width: "10rem", height: "10rem" }}>
+          <span className="sr-only">Loading...</span>
         </div>
+      </div>
     )
-}
+  }
 
 
   return (
@@ -64,7 +65,7 @@ const Desctiption = () => {
                   <ul>
                     {
                       Character.affiliations &&
-                      Character.affiliations.length > 0 ?
+                        Character.affiliations.length > 0 ?
                         Character.affiliations.map((affi: any, i: any) => <li key={i}>{affi}</li>)
 
                         : <p>No tiene affiliations</p>
@@ -76,9 +77,9 @@ const Desctiption = () => {
                   <ul>
                     {
                       Character.masters &&
-                      Character.masters.length > 0 ?
+                        Character.masters.length > 0 ?
                         typeof Character.masters === 'string' ? <li>{Character.masters}</li> :
-                        Character.masters.map((mas: any, i: any) => <li key={i}>{mas}</li>)
+                          Character.masters.map((mas: any, i: any) => <li key={i}>{mas}</li>)
                         : <p>No tiene masters</p>
                     }
                   </ul>
@@ -88,8 +89,8 @@ const Desctiption = () => {
                   <ul>
                     {
                       Character.apprentices &&
-                      Character.apprentices.length > 0 ?
-                      Character.apprentices.map((appre: any, i: any) => <li key={i}>{appre}</li>)
+                        Character.apprentices.length > 0 ?
+                        Character.apprentices.map((appre: any, i: any) => <li key={i}>{appre}</li>)
 
                         : <p>No tiene apprentices</p>
                     }
@@ -100,8 +101,8 @@ const Desctiption = () => {
                   <ul>
                     {
                       Character.formerAffiliations &&
-                      Character.formerAffiliations.length > 0 ?
-                      Character.formerAffiliations.map((appre: any, i: any) => <li key={i}>{appre}</li>)
+                        Character.formerAffiliations.length > 0 ?
+                        Character.formerAffiliations.map((appre: any, i: any) => <li key={i}>{appre}</li>)
 
                         : <p>No tiene formerAffiliations</p>
                     }

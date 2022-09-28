@@ -4,11 +4,11 @@ const getCharacters = () => {
     return axios.get('https://akabab.github.io/starwars-api/api/all.json')
 }
 
-const getData = (type) => {
+const getData = (type:string) => {
     return axios.get(`https://swapi.dev/api/${type}`)
 }
 
-const getCharactersByid = (id) => {
+const getCharactersByid = (id:string) => {
     return axios.get(`https://akabab.github.io/starwars-api/api/id/${id}.json`)
 }
 

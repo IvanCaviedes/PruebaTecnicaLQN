@@ -10,7 +10,7 @@ export const getCharacters = createAsyncThunk("starwars/getCharacters", async ({
     }
 });
 
-export const getSpeciesOrLocations = createAsyncThunk("starwars/getSpeciesOrLocations", async ({ type }, thunkAPI) => {
+export const getSpeciesOrLocations = createAsyncThunk("starwars/getSpeciesOrLocations", async ({ type }: { type: string }, thunkAPI) => {
     try {
         let response = await starWarsService.getData(type)
         return response.data
@@ -19,7 +19,7 @@ export const getSpeciesOrLocations = createAsyncThunk("starwars/getSpeciesOrLoca
     }
 });
 
-export const getCharactersByid = createAsyncThunk("starwars/getCharactersByid", async ({ id }, thunkAPI) => {
+export const getCharactersByid = createAsyncThunk("starwars/getCharactersByid", async ({ id }: { id: string }, thunkAPI) => {
     try {
         let response = await starWarsService.getCharactersByid(id)
         console.log(response.data)
@@ -47,22 +47,22 @@ const counterSlice = createSlice({
     name: 'starwars',
     initialState,
     extraReducers: {
-        [getCharacters.fulfilled]: (state: any, action: PayloadAction<number>) => {
+        [getCharacters.fulfilled.type]: (state: any, action: PayloadAction<number>) => {
             state.data = action.payload;
         },
-        [getCharacters.rejected]: (state: any, action: PayloadAction<number>) => {
+        [getCharacters.rejected.type]: (state: any, action: PayloadAction<number>) => {
             state.error = action.payload;
         },
-        [getSpeciesOrLocations.fulfilled]: (state: any, action: PayloadAction<number>) => {
+        [getSpeciesOrLocations.fulfilled.type]: (state: any, action: PayloadAction<number>) => {
             state.data = action.payload;
         },
-        [getSpeciesOrLocations.rejected]: (state: any, action: PayloadAction<number>) => {
+        [getSpeciesOrLocations.rejected.type]: (state: any, action: PayloadAction<number>) => {
             state.error = action.payload;
         },
-        [getCharactersByid.fulfilled]: (state: any, action: PayloadAction<number>) => {
+        [getCharactersByid.fulfilled.type]: (state: any, action: PayloadAction<number>) => {
             state.Character = action.payload;
         },
-        [getCharactersByid.rejected]: (state: any, action: PayloadAction<number>) => {
+        [getCharactersByid.rejected.type]: (state: any, action: PayloadAction<number>) => {
             state.error = action.payload;
         },
     },
